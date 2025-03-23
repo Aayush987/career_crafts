@@ -6,14 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:push": "npx drizzle-kit push",
+    "db:studio": "npx drizzle-kit studio"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.10.6",
+    "@neondatabase/serverless": "^0.10.4",
+    "drizzle-orm": "^0.39.1",
+    "firebase": "^11.4.0",
+    "imagekit": "^6.0.0",
+    "imagekitio-next": "^1.0.1",
+    "lucide-react": "^0.474.0",
+    "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.1.6"
+    "react-toastify": "^11.0.3"
   },
   "devDependencies": {
+    "@types/pg": "^8.11.11",
+    "daisyui": "^4.12.23",
+    "drizzle-kit": "^0.30.4",
+    "pg": "^8.13.1",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
   }
