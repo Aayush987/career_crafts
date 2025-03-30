@@ -1,4 +1,4 @@
-import { UserDetailContext } from "@/app/portfolio_builder/_context/UserDetailContext";
+import { UserDetailContext } from "@/app/_context/UserDetailContext";
 import { db } from "@/utils";
 import { project } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";

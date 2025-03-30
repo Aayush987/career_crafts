@@ -1,5 +1,5 @@
 "use client";
-import { UserDetailContext } from "@/app/portfolio_builder/_context/UserDetailContext";
+import { UserDetailContext } from "@/app/_context/UserDetailContext";
 import { db } from "@/utils";
 import { userinfo } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
@@ -9,7 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Upload from "./Upload";
 import Image from "next/image";
-import { PreviewUpdateContext } from "@/app/portfolio_builder/_context/PreviewUpdateContext";
+import { PreviewUpdateContext } from "@/app/_context/PreviewUpdateContext";
 
 export default function BasicDetails() {
     const [selectedOption, setSelectedOption] = useState();

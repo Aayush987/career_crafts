@@ -1,4 +1,4 @@
-import { PreviewUpdateContext } from "@/app/portfolio_builder/_context/PreviewUpdateContext";
+import { PreviewUpdateContext } from "@/app/_context/PreviewUpdateContext";
 import { db } from "@/utils";
 import { project } from "@/utils/schema";
 import { eq } from "drizzle-orm";

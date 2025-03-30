@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { ImageKitProvider, IKImage, IKUpload } from "imagekitio-next";
 import { Camera } from "lucide-react";
 import Image from "next/image";
-import { UserDetailContext } from "@/app/portfolio_builder/_context/UserDetailContext";
+import { UserDetailContext } from "@/app/_context/UserDetailContext";
 
 const publicKey = process.env.NEXT_PUBLIC_PUBLIC_KEY;
 const urlEndpoint = process.env.NEXT_PUBLIC_URL_ENDPOINT;

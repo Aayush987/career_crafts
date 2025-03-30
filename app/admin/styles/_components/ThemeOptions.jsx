@@ -1,6 +1,6 @@
 "use client";
-import { PreviewUpdateContext } from "@/app/portfolio_builder/_context/PreviewUpdateContext";
-import { UserDetailContext } from "@/app/portfolio_builder/_context/UserDetailContext";
+import { PreviewUpdateContext } from "@/app/_context/PreviewUpdateContext";
+import { UserDetailContext } from "@/app/_context/UserDetailContext";
 import { THEMES } from "@/app/_data/Themes";
 import { db } from "@/utils";
 import { userinfo } from "@/utils/schema";

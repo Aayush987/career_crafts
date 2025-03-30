@@ -4,7 +4,7 @@ import { userinfo } from '@/utils/schema'
 import { useUser } from '@clerk/nextjs'
 import { eq } from 'drizzle-orm'
 import React, { useEffect, useState } from 'react'
-import { UserDetailContext } from './portfolio_builder/_context/UserDetailContext';
+import { UserDetailContext } from './_context/UserDetailContext';
 
 function Provider({children}) {
     const {user} = useUser();

@@ -1,5 +1,5 @@
 "use client";
-import { PreviewUpdateContext } from "@/app/portfolio_builder/_context/PreviewUpdateContext"
+import { PreviewUpdateContext } from "@/app/_context/PreviewUpdateContext"
 import { useContext } from "react"
 
 export default function MobilePreview() {
@@ -12,7 +12,7 @@ export default function MobilePreview() {
             <iframe
               title="Profile"
               key={updatePreview}
-              src={process.env.NEXT_PUBLIC_BASE_URL + "portfolio_builder/aayush"}
+              src={process.env.NEXT_PUBLIC_BASE_URL + "/aayush"}
               width="100%"
               height="100%"
               className="rounded-[25px]"
