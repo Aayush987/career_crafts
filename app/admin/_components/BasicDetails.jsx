@@ -4,11 +4,13 @@ import { db } from "@/utils";
 import { userinfo } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
-import { Camera, Link2, MapPin } from "lucide-react";
+import { Camera, Github, Link2, MapPin } from "lucide-react";
 import { useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Upload from "./Upload";
 import Image from "next/image";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaSquareGithub, FaTwitter, FaXTwitter } from "react-icons/fa6";
 import { PreviewUpdateContext } from "@/app/_context/PreviewUpdateContext";
 
 export default function BasicDetails() {
@@ -19,7 +21,7 @@ export default function BasicDetails() {
     const {userDetail, setUserDetail} = useContext(UserDetailContext);
 
     useEffect(() => {
-
+    //  console.log("userdetail,", userDetail);
     }, [userDetail]);
 
     useEffect(() => {
@@ -68,6 +70,88 @@ export default function BasicDetails() {
                 })
               }
         },1000);
+    }
+
+    const renderInputField = () => {
+      switch (selectedOption) {
+        case "location": 
+           return (
+            <div className="mt-2">
+            <label className="input input-bordered flex items-center gap-2">
+              <MapPin />
+              <input
+                type="text"
+                className="grow"
+                placeholder="Location"
+                defaultValue={userDetail?.location}
+                onChange={(event) => onInputChange(event, 'location')}
+              />
+            </label>
+          </div>
+           );
+
+        case "link": 
+          return (
+            <div className="mt-2">
+            <label className="input input-bordered flex items-center gap-2">
+              <Link2 />
+              <input
+                type="text"
+                className="grow"
+                placeholder="URL"
+                defaultValue={userDetail?.link}
+                onChange={(event) => onInputChange(event, 'link')}
+              />
+            </label>
+          </div>
+          );
+
+        case "github":
+          return ( 
+           <div className="mt-2">
+           <label className="input input-bordered flex items-center gap-2">
+           <FaGithub />
+             <input
+               type="text"
+               className="grow"
+               placeholder="URL"
+               defaultValue={userDetail?.github}
+               onChange={(event) => onInputChange(event, 'github')}
+             />
+           </label>
+         </div>
+          );
+        case "linkedin":
+          return (
+            <div className="mt-2">
+            <label className="input input-bordered flex items-center gap-2">
+               <FaLinkedin />
+              <input
+                type="text"
+                className="grow"
+                placeholder="URL"
+                defaultValue={userDetail?.linkedin}
+                onChange={(event) => onInputChange(event, 'linkedin')}
+              />
+            </label>
+          </div>
+          );
+        case "twitter":
+          return (
+            <div className="mt-2">
+            <label className="input input-bordered flex items-center gap-2">
+                <FaTwitter />
+              <input
+                type="text"
+                className="grow"
+                placeholder="URL"
+                defaultValue={userDetail?.twitter}
+                onChange={(event) => onInputChange(event, 'twitter')}
+              />
+            </label>
+          </div>
+          )
+      }
     }
 
     const handleImageUpload = async(imageUrl) => {
@@ -119,22 +203,17 @@ export default function BasicDetails() {
                     <Link2
                      onClick={() => setSelectedOption("link")}
                      className={`h-12 w-12 p-3 rounded-md text-yellow-500 hover:bg-gray-600 ${selectedOption == 'link' && 'bg-gray-600'}`} />
+                     <FaLinkedin
+                     onClick={() => setSelectedOption("linkedin")}
+                     className={`h-12 w-12 p-3 rounded-md text-blue-500 hover:bg-gray-600 ${selectedOption == 'linkedin' && 'bg-gray-600'}`} />
+                     <FaSquareGithub
+                     onClick={() => setSelectedOption("github")}
+                     className={`h-12 w-12 p-3 rounded-md text-black hover:bg-gray-600 ${selectedOption == 'github' && 'bg-gray-600'}`} />
+                     <FaXTwitter 
+                     onClick={() => setSelectedOption("twitter")}
+                     className={`h-12 w-12 p-3 rounded-md text-black hover:bg-gray-600 ${selectedOption == 'twitter' && 'bg-gray-600'}`} />
                 </div>
-                {selectedOption == "location" ? (
-                    <div className="mt-2">
-                    <label className="input input-bordered flex items-center gap-2">
-                        <MapPin />
-                        <input type="text" className="grow" placeholder="Location" key={1} defaultValue={userDetail?.location} onChange={(event) => onInputChange(event, 'location')} />
-                    </label>
-                    </div>
-                ): (
-                    <div className="mt-2">
-                    <label className="input input-bordered flex items-center gap-2">
-                        <Link2 />
-                        <input type="text" className="grow" placeholder="URL" key={2} defaultValue={userDetail?.link} onChange={(event) => onInputChange(event, 'link')} />
-                    </label>
-                    </div>
-                )}
+                {renderInputField()}
                 {/* <div className="mt-2">
                 <label className="input input-bordered flex items-center gap-2">
                     <MapPin />

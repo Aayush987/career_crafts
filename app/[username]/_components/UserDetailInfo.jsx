@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { MapPin, Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { MapPin, Github, Twitter, Linkedin, Mail, Link2 } from "lucide-react";
+import { FaGithub, FaLink, FaLinkedin, FaTwitter } from "react-icons/fa6";
 
 const UserDetailInfo = ({userDetail}) => {
+  console.log(userDetail);
     if (!userDetail) return null;
     // return (
     //     userDetail && (
@@ -54,7 +56,22 @@ const UserDetailInfo = ({userDetail}) => {
               <h2 className="md:text-4xl ">{userDetail?.name}</h2>
               <p className=" text-gray-400 my-2 flex text-center justify-center gap-1"><MapPin /> {userDetail?.location}</p>
               <h2 className="text-gray-500 md:max-w-2xl md:text-lg max-sm:text-center md:my-4">{userDetail?.bio}</h2>
+            <div className="flex gap-4 my-4 md:mt-0">
+              <a href={userDetail?.link} target="_blank" rel="noopener noreferrer">
+                <FaLink size={20} />
+              </a>
+              <a href={userDetail?.github} target="_blank" rel="noopener noreferrer">
+                <FaGithub size={20} />
+              </a>
+              <a href={userDetail?.linkedin} target="_blank" rel="noopener noreferrer">
+                <FaLinkedin size={20} />
+              </a>
+              <a href={userDetail?.twitter} target="_blank" rel="noopener noreferrer">
+                <FaTwitter size={20} />
+              </a>
+            </div>
            </div>
+          
        </div>
      )
   )

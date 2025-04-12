@@ -2,7 +2,7 @@ import { PreviewUpdateContext } from "@/app/_context/PreviewUpdateContext";
 import { db } from "@/utils";
 import { project } from "@/utils/schema";
 import { eq } from "drizzle-orm";
-import { Link2 } from "lucide-react";
+import { Link2, Tag } from "lucide-react";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -48,15 +48,29 @@ const ProjectListEdit = ({projectList, refreshData}) => {
                     <Link2
                      onClick={() => setSelectedOption("link" + index)}
                      className={`h-12 w-12 p-3 rounded-md text-yellow-500 hover:bg-gray-600 ${selectedOption == 'link' && 'bg-gray-600'}`} />
+                     <Tag 
+                     onClick={() => setSelectedOption("category" + index)}
+                     className={`h-12 w-12 p-3 rounded-md text-violet-500 hover:bg-gray-600 ${selectedOption == 'category' && 'bg-gray-600'}`} />
                 </div>
-                    <div className="mt-2">
+                   {selectedOption == "link" + index ? 
+                  ( <div className="mt-2">
                     <label className="input input-bordered flex items-center gap-2">
                         <Link2 />
-                        <input type="text" className="grow" placeholder="Location" key={1} defaultValue={project?.url} 
+                        <input type="text" className="grow" placeholder="Link"  defaultValue={project?.url} 
                         onChange={(event) => onInputChange(event, 'url', project.id)} 
                         />
                     </label>
-                    </div>
+                    </div>) : 
+                    selectedOption == "category" + index ?
+                    (<div className="mt-2">
+                    <label className="input input-bordered flex items-center gap-2">
+                        <Tag />
+                        <input type="text" className="grow" placeholder="Category"  defaultValue={project?.category} 
+                        onChange={(event) => onInputChange(event, 'category', project.id)} 
+                        />
+                    </label>
+                    </div>)
+                    : null}
             </div>
             </div>
            ) )}

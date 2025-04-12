@@ -4,26 +4,21 @@ import { db } from '@/utils';
 import { project, userinfo } from '@/utils/schema';
 import { useUser } from '@clerk/nextjs';
 import { eq } from 'drizzle-orm';
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { UserDetailContext } from '../_context/UserDetailContext';
+import { usePathname } from 'next/navigation';
+import { AdvancedUserDetailContext } from '../_context/AdvancedUserDetailContext';
 
 function Provider({children}) {
 
-  const {user} = useUser();
-  const {userDetail, setUserDetail} = useContext(UserDetailContext);
+  const [advanceduserDetail, setAdvancedUserDetail] = useState({});
+  const USERNAME = usePathname().replace('/','');
 
   useEffect(() => {
       GetUserDetails();
-  },[user]);
+  },[]);
 
   const GetUserDetails = async () => { 
-    
-  //    const result = await db.query.userinfo.findMany({
-  //     with: {
-  //       project: true
-  //     },
-  //     where:(eq(userinfo.email, user?.primaryEmailAddress.emailAddress))
-  //    })
   const result = await db.select(
     {
       id: userinfo.id,
@@ -31,6 +26,9 @@ function Provider({children}) {
       email: userinfo.email,
       logo: userinfo.logo,
       link:userinfo.link,
+      github:userinfo.github,
+      linkedin:userinfo.linkedin,
+      twitter:userinfo.twitter,
       bio:userinfo.bio,
       theme:userinfo.theme,
       location:userinfo.location,
@@ -40,12 +38,13 @@ function Provider({children}) {
         desc: project.desc,
         url: project.url,
         logo: project.logo,
-        banner: project.banner
+        banner: project.banner,
+        category: project.category
       }
     }
   ).from(userinfo)
   .leftJoin(project,eq(userinfo.id,project.userRef))
-  .where(eq(userinfo.email, user?.primaryEmailAddress.emailAddress));
+  .where(eq(userinfo.username, USERNAME));
 
   const formattedUser = result.reduce((acc, row) => {
     if (!acc) {
@@ -55,6 +54,9 @@ function Provider({children}) {
         email: row.email,
         logo: row.logo,
         link: row.link,
+        github:row.github,
+        linkedin:row.linkedin,
+        twitter:row.twitter,
         bio: row.bio,
         theme: row.theme,
         location: row.location,
@@ -68,7 +70,8 @@ function Provider({children}) {
         url: row.projects.url,
         id: row.projects.id,
         logo: row.projects.logo,
-        banner: row.projects.banner
+        banner: row.projects.banner,
+        category: row.projects.category
       });
     }
     return acc;
@@ -76,15 +79,17 @@ function Provider({children}) {
 
 
      console.log(formattedUser);
-     setUserDetail(formattedUser);
+     setAdvancedUserDetail(formattedUser);
     //  console.log(result2);
   }
 
   
 
   return (
-    <div data-theme={userDetail?.theme}>
+    <div data-theme={advanceduserDetail?.theme}>
+      <AdvancedUserDetailContext.Provider value = {{advanceduserDetail, setAdvancedUserDetail}}>
         {children}
+      </AdvancedUserDetailContext.Provider>
     </div>
   )
 }

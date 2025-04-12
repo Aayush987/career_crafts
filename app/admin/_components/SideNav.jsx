@@ -17,18 +17,18 @@ export default function SideNav() {
             icon: Brush,
             path: "/admin/styles"
         },
-        {
-            id:3,
-            name: "Stats",
-            icon: BarChart,
-            path: "/admin/analytics"
-        },
-        {
-            id:4,
-            name: "Settings",
-            icon: Settings,
-            path: "/admin/settings"
-        },
+        // {
+        //     id:3,
+        //     name: "Stats",
+        //     icon: BarChart,
+        //     path: "/admin/analytics"
+        // },
+        // {
+        //     id:4,
+        //     name: "Settings",
+        //     icon: Settings,
+        //     path: "/admin/settings"
+        // },
     ]
 
     return (

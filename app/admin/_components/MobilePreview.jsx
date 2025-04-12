@@ -1,10 +1,12 @@
 "use client";
 import { PreviewUpdateContext } from "@/app/_context/PreviewUpdateContext"
+import { UserDetailContext } from "@/app/_context/UserDetailContext";
 import { useContext } from "react"
 
 export default function MobilePreview() {
 
     const {updatePreview, setUpdatePreview} = useContext(PreviewUpdateContext);
+    const {userDetail, setUserDetail} = useContext(UserDetailContext);
 
     return (
         <div className="p-5">
@@ -12,7 +14,7 @@ export default function MobilePreview() {
             <iframe
               title="Profile"
               key={updatePreview}
-              src={process.env.NEXT_PUBLIC_BASE_URL + "/aayush"}
+              src={process.env.NEXT_PUBLIC_BASE_URL + `/${userDetail.username}`}
               width="100%"
               height="100%"
               className="rounded-[25px]"

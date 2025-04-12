@@ -11,6 +11,9 @@ export const userinfo = pgTable('userInfo', {
     bio:text('bio'),
     location:varchar('location'),
     link:varchar('link'),
+    github:varchar('github'),
+    linkedin:varchar('linkedin'),
+    twitter:varchar('twitter'),
     theme:varchar('theme').default('light')
 })
 
@@ -23,8 +26,16 @@ export const project = pgTable('projects', {
     logo:varchar('logo'),
     banner:varchar('banner'),
     emailRef:varchar('emailRef'),
+    category:varchar('category'),
     userRef:integer('userRef').references(() => userinfo?.id)
 
+})
+
+
+export const ProjectClicks = pgTable('projectClicks', {
+    id: serial('id').primaryKey(),
+    projectRef:integer('projectRef').references(() => project.id),
+    month: varchar('month')
 })
 
 

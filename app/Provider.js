@@ -12,7 +12,7 @@ function Provider({children}) {
 
     useEffect(() => {
          
-        user && GetUserDetails();
+       user&&GetUserDetails();
         
     },[user]);
 
