@@ -54,7 +54,7 @@ const UserDetailInfo = ({userDetail}) => {
            </div>
            <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
               <h2 className="md:text-4xl ">{userDetail?.name}</h2>
-              <p className=" text-gray-400 my-2 flex text-center justify-center gap-1"><MapPin /> {userDetail?.location}</p>
+              <p className=" text-gray-400 my-2 flex text-center justify-center gap-[3px] md:gap-1"><MapPin /> {userDetail?.location}</p>
               <h2 className="text-gray-500 md:max-w-2xl md:text-lg max-sm:text-center md:my-4">{userDetail?.bio}</h2>
             <div className="flex gap-4 my-4 md:mt-0">
               <a href={userDetail?.link} target="_blank" rel="noopener noreferrer">

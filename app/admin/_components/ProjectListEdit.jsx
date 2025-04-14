@@ -38,7 +38,7 @@ const ProjectListEdit = ({projectList, refreshData}) => {
     return (
         <div className=" mt-10">
            {projectList.map((project, index) => (
-             <div className="my-7 bg-gray-800 p-3 rounded-lg ">
+             <div key={project.id} className="my-7 bg-gray-800 p-3 rounded-lg ">
                 <div className="flex items-center gap-3">
                  <input type="text" placeholder="Project Name" defaultValue={project.name} onChange={(event) => onInputChange(event, 'name', project.id)} className="input input-bordered w-full my-2" />
                  </div>

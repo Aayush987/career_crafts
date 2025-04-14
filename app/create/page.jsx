@@ -30,7 +30,7 @@ export default function Page() {
         }
 
     const handleBtnClick = async () => {
-        if(username.length > 10) {
+        if(username.length > 20) {
             toast.error("Username should not be more than 10 characters!", {
                 position: "top-right"
             });
@@ -48,7 +48,13 @@ export default function Page() {
             toast.success("Username created successfully!", {
                 position: "top-right"
             });
-            route.replace('/admin');
+            setTimeout(() => {
+                window.location.reload(); 
+    
+                setTimeout(() => {
+                    route.push('/admin');
+                }, 1000);  
+            }, 1000); 
         }
 
     }
