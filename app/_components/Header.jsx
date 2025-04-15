@@ -12,7 +12,7 @@ const Header = () => {
                   P
                 </div>
               </div>
-              <span className="text-xl font-bold">PortfolioBuilder</span>
+              <span className="text-xl font-bold">PortfolioHub</span>
             </Link>
           </div>
 

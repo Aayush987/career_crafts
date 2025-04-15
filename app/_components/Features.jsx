@@ -5,7 +5,7 @@ const Features = () => {
         <section className="py-20">
         <div className="container">
           <div className="mb-12 text-center">
-            <h2 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl">Why Choose PortfolioBuilder</h2>
+            <h2 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl">Why Choose PortfolioHub</h2>
             <p className="mx-auto max-w-2xl text-muted-foreground">
               Everything you need to create a professional portfolio website without coding skills.
             </p>

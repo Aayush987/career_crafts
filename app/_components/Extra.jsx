@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const Extra = () => {
     return (
@@ -8,9 +9,9 @@ const Extra = () => {
             <p className="mx-auto mb-8 max-w-2xl text-primary-foreground/90">
               Join thousands of professionals who have already created stunning portfolios with our platform.
             </p>
-            <button className="gap-2">
+            <Link href="/create" className="gap-2">
               <span className="flex justify-center items-center gap-2 hover:text-primary">Get Started for Free <ArrowRight size={16} /></span>
-            </button>
+            </Link>
           </div>
         </section>
     )

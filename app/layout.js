@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Portfolio Builder",
+  title: "Portfolio Hub",
   description: "Create Personalized portfolios without any code",
 };
 
