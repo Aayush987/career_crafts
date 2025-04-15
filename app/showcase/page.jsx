@@ -46,15 +46,20 @@ export default function Page() {
                     </p>
                 </div>
             </section>
-           {/* <div className="flex items-center justify-center pb-4">
+           <div className="flex items-center justify-center pb-4">
             <input type="text" className="bg-inherit border-2 border-white w-[18rem] px-2 py-2 rounded-lg" placeholder="Search for a Profile.." value={searchText} onChange={(e) => setSearchText(e.target.value)} />
-           </div> */}
+           </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 m-4">
                 {/* {(filteredProfiles?.length > 0 ? filteredProfiles : user).map((user) => (
                     <ProfileCard key={user.id} userDetail={user} />
                 ))} */}
-                {
+                {/* {
                     user.map((user) => (
+                        <ProfileCard key={user.id} userDetail={user} />
+                    ))
+                } */}
+                {
+                    filteredProfiles.map((user) => (
                         <ProfileCard key={user.id} userDetail={user} />
                     ))
                 }
