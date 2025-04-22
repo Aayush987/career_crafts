@@ -11,7 +11,7 @@ import { usePathname } from "next/navigation";
 const ProjectList = ({projectList}) => {
 
    const [projectClickData, setProjectClickData] = useState([]);
-   const USERNAME = usePathname().replace('/','');
+   const USERNAME = usePathname().replace('/profile/','');
    
    console.log(projectList?.projects);
    useEffect(() => {

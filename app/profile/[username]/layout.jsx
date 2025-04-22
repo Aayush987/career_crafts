@@ -1,6 +1,7 @@
 import Provider from "./Provider";
 
 
+
 const UserPageLayout = ({children}) => {
     return (
         <div>

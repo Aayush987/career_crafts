@@ -2,7 +2,7 @@
 import { db } from "@/utils"
 import { userinfo } from "@/utils/schema"
 import { useEffect, useState } from "react";
-import UserDetailInfo from "../[username]/_components/UserDetailInfo";
+import UserDetailInfo from "../profile/[username]/_components/UserDetailInfo";
 import ProfileCard from "./_components/ProfileCard";
 import Header from "../_components/Header";
 import { eq } from "drizzle-orm";

@@ -6,7 +6,7 @@ import { FaGithub, FaLink, FaLinkedin, FaTwitter } from "react-icons/fa6";
 const ProfileCard = ({ userDetail }) => {
     return (
         <div 
-         onClick={() => window.open(`/${userDetail.username}`, '_blank')}
+         onClick={() => window.open(`/profile/${userDetail.username}`, '_blank')}
          role="button"
           className="relative overflow-hidden rounded-xl border bg-card text-card-foreground shadow-sm transition-all hover:shadow-md">
             <div className="absolute inset-0 -z-10 bg-gradient-to-b from-primary/10 to-transparent opacity-80" />

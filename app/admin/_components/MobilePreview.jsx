@@ -14,7 +14,7 @@ export default function MobilePreview() {
             <iframe
               title="Profile"
               key={updatePreview}
-              src={process.env.NEXT_PUBLIC_BASE_URL + `/${userDetail.username}`}
+              src={process.env.NEXT_PUBLIC_BASE_URL + `/profile/${userDetail.username}`}
               width="100%"
               height="100%"
               className="rounded-[25px]"

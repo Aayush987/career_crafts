@@ -5,14 +5,15 @@ import { project, userinfo } from '@/utils/schema';
 import { useUser } from '@clerk/nextjs';
 import { eq } from 'drizzle-orm';
 import React, { useContext, useEffect, useState } from 'react'
-import { UserDetailContext } from '../_context/UserDetailContext';
+import { UserDetailContext } from '../../_context/UserDetailContext';
 import { usePathname } from 'next/navigation';
-import { AdvancedUserDetailContext } from '../_context/AdvancedUserDetailContext';
+import { AdvancedUserDetailContext } from '@/app/_context/AdvancedUserDetailContext';
+
 
 function Provider({children}) {
 
   const [advanceduserDetail, setAdvancedUserDetail] = useState({});
-  const USERNAME = usePathname().replace('/','');
+  const USERNAME = usePathname().replace('/profile/','');
 
   useEffect(() => {
       GetUserDetails();
@@ -78,7 +79,7 @@ function Provider({children}) {
   }, null);
 
 
-     console.log(formattedUser);
+     console.log("detail:",formattedUser);
      setAdvancedUserDetail(formattedUser);
     //  console.log(result2);
   }

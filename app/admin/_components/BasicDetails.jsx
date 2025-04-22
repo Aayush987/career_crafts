@@ -12,6 +12,7 @@ import Image from "next/image";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { FaSquareGithub, FaTwitter, FaXTwitter } from "react-icons/fa6";
 import { PreviewUpdateContext } from "@/app/_context/PreviewUpdateContext";
+import { ImProfile } from "react-icons/im";
 
 export default function BasicDetails() {
     const [selectedOption, setSelectedOption] = useState();
@@ -212,6 +213,13 @@ export default function BasicDetails() {
                      <FaXTwitter 
                      onClick={() => setSelectedOption("twitter")}
                      className={`h-12 w-12 p-3 rounded-md text-black hover:bg-gray-600 ${selectedOption == 'twitter' && 'bg-gray-600'}`} />
+                    <div
+                      onClick={() => window.open(`/profile/${userDetail.username}`, '_blank')}
+                      className="tooltip tooltip-secondary tooltip-bottom"
+                      data-tip="Click to see your profile page"
+                    >
+                      <ImProfile className="h-12 w-12 p-3 rounded-md text-black hover:bg-gray-600 cursor-pointer" />
+                    </div>
                 </div>
                 {renderInputField()}
                 {/* <div className="mt-2">
