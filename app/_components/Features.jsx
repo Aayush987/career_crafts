@@ -2,7 +2,7 @@ import {features} from "./Data"
 
 const Features = () => {
     return (
-        <section className="py-20">
+        <section className="py-20 flex justify-center items-center">
         <div className="container">
           <div className="mb-12 text-center">
             <h2 className="mb-2 text-3xl font-bold tracking-tight sm:text-4xl">Why Choose PortfolioHub</h2>

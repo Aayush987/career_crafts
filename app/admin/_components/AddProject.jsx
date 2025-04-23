@@ -6,7 +6,7 @@ import { Link2 } from "lucide-react";
 import { useContext, useState } from "react";
 import { toast } from "react-toastify";
 
-export default function AddProject() {
+export default function AddProject({refreshData}) {
 
     const [openUrlInput, setOpenUrlInput] = useState(false);
     const {userDetail, setUserDetail} = useContext(UserDetailContext);
@@ -29,6 +29,7 @@ export default function AddProject() {
             toast.success('New Project Added', {
                 position: 'top-right'
             })
+            refreshData();
           }else {
             setLoading(false);
           }

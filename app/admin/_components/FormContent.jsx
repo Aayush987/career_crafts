@@ -28,7 +28,7 @@ export default function FormContent() {
             <h2 className="text-3xl font-bold">Start Designing your portfolio page</h2>
             <BasicDetails />
             <hr className="my-5" />
-            <AddProject />
+            <AddProject refreshData = {GetProjectList} />
 
             <ProjectListEdit projectList={projectList} refreshData={GetProjectList} />
         </div>
