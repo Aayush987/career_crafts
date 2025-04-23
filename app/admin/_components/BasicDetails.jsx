@@ -17,6 +17,7 @@ import { ImProfile } from "react-icons/im";
 export default function BasicDetails() {
     const [selectedOption, setSelectedOption] = useState();
     const [imageUrl, setImageUrl] = useState("");
+    const [inputValue, setInputValue] = useState("");
     const {user} = useUser();
 
     const {userDetail, setUserDetail} = useContext(UserDetailContext);
@@ -24,6 +25,28 @@ export default function BasicDetails() {
     useEffect(() => {
     //  console.log("userdetail,", userDetail);
     }, [userDetail]);
+
+    useEffect(() => {
+      switch (selectedOption) {
+        case "location":
+          setInputValue(userDetail?.location || "");
+          break;
+        case "link":
+          setInputValue(userDetail?.link || "");
+          break;
+        case "github":
+          setInputValue(userDetail?.github || "");
+          break;
+        case "linkedin":
+          setInputValue(userDetail?.linkedin || "");
+          break;
+        case "twitter":
+          setInputValue(userDetail?.twitter || "");
+          break;
+        default:
+          setInputValue("");
+      }
+    }, [selectedOption, userDetail]);
 
     useEffect(() => {
         if (!imageUrl) return; // Prevent running when imageUrl is empty
@@ -49,12 +72,14 @@ export default function BasicDetails() {
     let timeoutId;
     const {updatePreview, setUpdatePreview} = useContext(PreviewUpdateContext);
     const onInputChange = (event,fieldName) => {
+      const value = event.target.value;
+      setInputValue(value);
 
         clearTimeout(timeoutId);
         timeoutId = setTimeout(async () =>{
               const result = await db.update(userinfo)
               .set({
-                [fieldName]: event.target.value
+                [fieldName]: value
               }).where(eq(userinfo.email, user?.primaryEmailAddress.emailAddress));
               
               if(result) {
@@ -84,7 +109,7 @@ export default function BasicDetails() {
                 type="text"
                 className="grow"
                 placeholder="Location"
-                defaultValue={userDetail?.location}
+                value={inputValue}
                 onChange={(event) => onInputChange(event, 'location')}
               />
             </label>
@@ -100,7 +125,7 @@ export default function BasicDetails() {
                 type="text"
                 className="grow"
                 placeholder="URL"
-                defaultValue={userDetail?.link}
+                value={inputValue}
                 onChange={(event) => onInputChange(event, 'link')}
               />
             </label>
@@ -116,7 +141,7 @@ export default function BasicDetails() {
                type="text"
                className="grow"
                placeholder="URL"
-               defaultValue={userDetail?.github}
+               value={inputValue}
                onChange={(event) => onInputChange(event, 'github')}
              />
            </label>
@@ -131,7 +156,7 @@ export default function BasicDetails() {
                 type="text"
                 className="grow"
                 placeholder="URL"
-                defaultValue={userDetail?.linkedin}
+                value={inputValue}
                 onChange={(event) => onInputChange(event, 'linkedin')}
               />
             </label>
@@ -146,7 +171,7 @@ export default function BasicDetails() {
                 type="text"
                 className="grow"
                 placeholder="URL"
-                defaultValue={userDetail?.twitter}
+                value={inputValue}
                 onChange={(event) => onInputChange(event, 'twitter')}
               />
             </label>

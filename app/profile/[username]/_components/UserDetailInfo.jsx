@@ -6,34 +6,6 @@ import { FaGithub, FaLink, FaLinkedin, FaTwitter } from "react-icons/fa6";
 const UserDetailInfo = ({userDetail}) => {
   console.log(userDetail);
     if (!userDetail) return null;
-    // return (
-    //     userDetail && (
-    //         <div className="flex flex-col md:justify-center md:h-screen">
-    //        <div className="w-full items-center flex justify-between">
-    //            <div className="flex md:flex-col items-center md:items-start gap-4">
-    //            {userDetail.logo ? (
-    //         <Image
-    //           src={userDetail.logo}
-    //           alt={userDetail.name || "User Logo"}
-    //           width={192}
-    //           height={192}
-    //           className=" w-[90px] h-[90px] md:w-[192px] md:h-[192px] rounded-full object-cover"
-    //         />
-    //       ) : (
-    //         <div className="w-[90px] h-[90px] rounded-full bg-gray-300 flex items-center justify-center">
-    //           <span className="text-sm text-gray-500">No Image</span>
-    //         </div>
-    //       )}
-    //            <div className="flex flex-col gap-4 mt-3">
-    //               <h2 className="font-bold text-lg md:text-2xl">{userDetail?.name}</h2>
-    //               <h2 className="flex gap-2 items-center text-gray-500"><MapPin />{userDetail?.location}</h2>
-    //            </div>
-    //        </div>
-    //     </div>
-    //     <h2 className="my-7 ">{userDetail?.bio}</h2>
-    // </div>
-    // )
-    // )
     return (
      userDetail && (
        <div className="flex flex-col md:flex-row md:gap-10 md:items-center">

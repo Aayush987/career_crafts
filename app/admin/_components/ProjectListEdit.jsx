@@ -3,21 +3,27 @@ import { db } from "@/utils";
 import { project } from "@/utils/schema";
 import { eq } from "drizzle-orm";
 import { Link2, Tag } from "lucide-react";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { toast } from "react-toastify";
 
 const ProjectListEdit = ({projectList, refreshData}) => {
    const {updatePreview, setUpdatePreview} = useContext(PreviewUpdateContext);
     const [selectedOption, setSelectedOption] = useState();
+    const timeoutRefs = useRef({});
     let timeoutId;
     const onInputChange = (event,fieldName, projectId) => {
+
+      const key = `${projectId}_${fieldName}`;
+
+      if (timeoutRefs.current[key]) {
+        clearTimeout(timeoutRefs.current[key]);
+      }
     
         clearTimeout(timeoutId);
-        timeoutId = setTimeout(async () =>{
-              const result = await db.update(project)
-              .set({
-                [fieldName]: event.target.value
-              }).where(eq(project.id, projectId));
+        timeoutRefs.current[key] = setTimeout(async () => {
+          const result = await db.update(project)
+            .set({ [fieldName]: event.target.value })
+            .where(eq(project.id, projectId));  
               
               if(result) {
                 refreshData();
@@ -32,7 +38,7 @@ const ProjectListEdit = ({projectList, refreshData}) => {
                     position: 'top-right'
                 })
               }
-        },1000);
+        },2000);
     }
 
     return (
