@@ -49,12 +49,7 @@ const ProjectList = ({projectList}) => {
         let result = [];
         
         result.push({
-         month: "March",
-         totalClick: 0,
-         projectId: 0,
-        },
-        {
-         month: "April",
+         month: "Mar",
          totalClick: 0,
          projectId: 0,
         },
