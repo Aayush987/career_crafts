@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Provider from "./Provider";
+import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,9 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
     <html lang="en">
+        <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <body
       >
         <div>

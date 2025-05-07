@@ -16,7 +16,7 @@ const AnalyticCharts = ({data}) => {
                 <XAxis dataKey="month" />
                 <YAxis />
                 <Tooltip />
-                <Area type="monotone" dataKey="totalClick" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
+                <Area type="monotone" dataKey="Visitors" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)" />
             </AreaChart>
             </ResponsiveContainer>
         </div>
