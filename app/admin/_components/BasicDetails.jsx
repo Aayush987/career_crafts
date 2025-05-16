@@ -5,7 +5,7 @@ import { userinfo } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import { Camera, Github, Link2, MapPin } from "lucide-react";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import Upload from "./Upload";
 import Image from "next/image";
@@ -19,6 +19,7 @@ export default function BasicDetails() {
     const [imageUrl, setImageUrl] = useState("");
     const [inputValue, setInputValue] = useState("");
     const {user} = useUser();
+    const timeoutRefs = useRef({}); 
 
     const {userDetail, setUserDetail} = useContext(UserDetailContext);
 
@@ -73,10 +74,15 @@ export default function BasicDetails() {
     const {updatePreview, setUpdatePreview} = useContext(PreviewUpdateContext);
     const onInputChange = (event,fieldName) => {
       const value = event.target.value;
+      const key = fieldName;
+
+      if (timeoutRefs.current[key]) {
+        clearTimeout(timeoutRefs.current[key]);
+      }
       setInputValue(value);
 
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(async () =>{
+      //   clearTimeout(timeoutId);
+      timeoutRefs.current[key] = setTimeout(async () =>{
               const result = await db.update(userinfo)
               .set({
                 [fieldName]: value
