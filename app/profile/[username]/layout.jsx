@@ -10,6 +10,7 @@ export async function generateMetadata({ params }) {
     .select({
       name: userinfo.name,
       bio: userinfo.bio,
+      image: userinfo.logo,
     })
     .from(userinfo)
     .where(eq(userinfo.username, USERNAME))
@@ -18,6 +19,11 @@ export async function generateMetadata({ params }) {
   return {
     title: result?.name || "User Profile",
     description: result?.bio || "Create Personalized portfolios without any code",
+    openGraph: {
+      title: result?.name,
+      description: result?.bio,
+      images: [result?.image || "https://via.placeholder.com/400"],
+    },
   };
 }
 
