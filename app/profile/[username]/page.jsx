@@ -5,6 +5,7 @@ import { UserDetailContext } from "../../_context/UserDetailContext";
 import ProjectList from "./_components/ProjectList";
 import { AdvancedUserDetailContext } from "@/app/_context/AdvancedUserDetailContext";
 
+
 const UserPage = () => {
   const {advanceduserDetail, setAdvancedUserDetail} = useContext(AdvancedUserDetailContext);
   useEffect(() => {
